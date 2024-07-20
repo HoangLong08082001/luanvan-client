@@ -1,0 +1,33 @@
+.wrapper {
+  width: 20%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 450px;
+  padding: 20px 30px;
+  .form-img {
+    height: 250px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .name {
+    text-align: center;
+    color: #18458b;
+    font-weight: 800;
+    margin: 10px 0px;
+  }
+  .price {
+    color: rgb(99, 98, 98);
+    margin: 5px 0px;
+  }
+  .add {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    background-color: #18458b;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}

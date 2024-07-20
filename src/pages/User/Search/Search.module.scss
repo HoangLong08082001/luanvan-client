@@ -1,0 +1,21 @@
+.wrapper {
+  padding: 10px;
+  .title {
+    font-size: 30px;
+    color: #18458b;
+    text-align: center;
+    font-weight: 800;
+    margin: 30px 0px;
+  }
+  .list-foods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+  }
+  .not-found {
+    color: red;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+  }
+}

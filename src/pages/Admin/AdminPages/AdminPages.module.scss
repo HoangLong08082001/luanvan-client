@@ -1,0 +1,90 @@
+.wrapper {
+  padding: 10px;
+  height: 95%;
+  .title {
+    color: rgb(27, 153, 225);
+    font-weight: 800;
+    font-size: 25px;
+  }
+  .list-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    .add {
+      padding: 10px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background-color: #ff6634;
+      border-radius: 20px;
+    }
+    .excel {
+      border: none;
+      padding: 10px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      background-color: #1c6841;
+      color: white;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+  }
+  .form-table {
+    max-height: 600px;
+    overflow-y: scroll;
+    .table {
+      text-align: center;
+      width: 100%;
+      border: 1px solid rgb(187, 187, 187);
+      .tr-th {
+        background-color: rgb(27, 153, 225);
+        color: white;
+        th {
+          padding: 10px;
+        }
+      }
+      .tr-td {
+        padding: 10px;
+        transition: 0.2s linear;
+        td {
+          padding: 10px;
+        }
+        &:hover {
+          transition: 0.2s linear;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+            rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+            rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        }
+        .img {
+          border: 1px solid black;
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+.action {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  .edit {
+    color: #1c6841;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .lock {
+    color: #ad9914;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .delete {
+    color: red;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}

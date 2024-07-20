@@ -1,0 +1,96 @@
+.wrapper {
+  .top {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 5px;
+    .left {
+      width: 30%;
+
+      .logo {
+        padding: 30px;
+        display: flex;
+        .logo-first {
+          margin-left: 60px;
+          text-decoration: underline;
+          color: #f9b90f;
+          font-weight: 700;
+        }
+        .logo-second {
+          text-decoration: underline;
+          color: #18458b;
+          font-weight: 700;
+        }
+      }
+      .name {
+        color: #18458b;
+        font-weight: 800;
+      }
+    }
+    .right {
+      width: 100%;
+
+      .title {
+        font-size: 50px;
+        margin-top: 20px;
+        font-weight: 800;
+      }
+      .date {
+        color: #000000;
+      }
+    }
+  }
+  .info-customer {
+    font-size: 20px;
+    padding: 5px;
+    margin-top: 5px;
+    .cap {
+      color: white;
+      background-color: #18458b;
+      border: 1px solid black;
+      padding: 2px;
+      font-size: 15px;
+      text-align: center;
+      font-weight: 800;
+    }
+    .form {
+      font-size: 15px;
+      margin: 10px 0px;
+
+      width: 30%;
+      display: flex;
+      justify-content: space-between;
+      label {
+        font-weight: 900;
+        color: #000000;
+      }
+    }
+    .list {
+      font-size: 15px;
+
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0px;
+    }
+  }
+  .total {
+    padding: 5px;
+    .total-price {
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .half-price {
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .cancel {
+      padding: 10px 30px;
+      background-color: #18458b;
+      color: white;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

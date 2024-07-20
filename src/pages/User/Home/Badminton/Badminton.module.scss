@@ -1,0 +1,24 @@
+.wrapper {
+  width: 100%;
+  margin: 30px 0px;
+  background-color: #f6f6f6;
+  padding: 10px;
+  border-radius: 20px;
+  .title {
+    font-size: 25px;
+    font-weight: 900;
+    color: #18458b;
+  }
+  .list-yard {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .show-more {
+    text-align: center;
+    color: #f9b90f;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

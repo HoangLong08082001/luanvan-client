@@ -1,0 +1,173 @@
+.wrapper {
+  padding: 10x;
+  .up {
+    padding: 20px;
+    padding-top: 36px;
+
+    width: 100%;
+    display: flex;
+    .img {
+      width: 600px;
+      height: 400px;
+
+      img {
+        border-radius: 30px;
+        width: 600px;
+        height: 400px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        object-fit: cover; // Ensure the image covers the entire area
+        object-position: center; // Center the image within the container
+      }
+    }
+    .list-info {
+      width: 100%;
+      padding-left: 40px;
+      padding-right: 10px;
+      .description {
+        .name-yard {
+          font-weight: 800;
+          font-size: 40px;
+          text-align: center;
+          color: #18458b;
+        }
+        .title-des {
+          font-size: 20px;
+          margin-bottom: 10px;
+          font-weight: 800;
+          color: #18458b;
+        }
+      }
+    }
+    .info-host {
+      background-color: #f3f3f3;
+      padding: 20px;
+      padding-top: 10px;
+      margin-top: 20px;
+      border-radius: 30px;
+      .title-host {
+        text-align: center;
+        font-weight: 800;
+        color: #18458b;
+        margin-bottom: 10px;
+      }
+      .email {
+        margin-bottom: 10px;
+      }
+    }
+    .booking {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .calendar {
+    // border: 1px solid black;
+    // padding: 30px;
+    align-items: center;
+    padding-bottom: 60px;
+
+    .date-time {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      // margin: auto;
+      justify-content: center;
+      .btn-next {
+        cursor: pointer;
+        border: none;
+        color: #18458b;
+        background-color: white;
+        padding: 10px;
+        font-size: 40px;
+      }
+      .date {
+        margin: 10px 10px 10px 10px;
+        border: none;
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .list-calendar {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+        rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      width: 60%;
+      padding: 40px 0px;
+      margin: auto;
+      align-items: center;
+      justify-content: center;
+      .slot {
+        font-weight: 800;
+        transition: 0.2s linear;
+        border: 1px solid black;
+        border-radius: 200px;
+        padding: 16px 10px;
+        width: 150px;
+        box-shadow: #18458b 0px 0px 0px 3px;
+        .item {
+          text-align: center;
+        }
+      }
+      .slot-active {
+        font-weight: 800;
+        transition: 0.2s linear;
+        border: 1px solid black;
+        border-radius: 200px;
+
+        padding: 16px 10px;
+        width: 150px;
+        background-color: #18458b;
+        box-shadow: #18458b 0px 0px 0px 3px;
+        .item {
+          color: white;
+          text-align: center;
+        }
+      }
+      .slot-inactive {
+        font-weight: 800;
+        transition: 0.2s linear;
+        border: 1px solid black;
+        border-radius: 200px;
+        pointer-events: none;
+        padding: 16px 10px;
+        width: 150px;
+        background-color: #b1b1b1;
+        box-shadow: #18448baf 0px 0px 0px 3px;
+        .item {
+          color: rgb(71, 71, 71);
+          text-align: center;
+        }
+      }
+      .slot-block {
+        pointer-events: none;
+        opacity: 0.2;
+        border: 1px solid black;
+        padding: 20px;
+        width: 40%;
+        box-shadow: #18458b 0px 0px 0px 3px;
+        .item {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.btn-booking {
+  background-color: #f9b90f;
+  padding: 10px 32px;
+  font-size: 15px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 800;
+  color: #18458b;
+  cursor: pointer;
+}

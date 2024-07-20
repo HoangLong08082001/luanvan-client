@@ -1,0 +1,56 @@
+.wrapper {
+  padding: 10px;
+  width: 100%;
+
+  .form {
+    width: 30%;
+
+    padding: 20px;
+    margin: 30px auto;
+    .title-login {
+      text-align: center;
+      font-weight: 800;
+      font-size: 25px;
+      color: #18458b;
+    }
+    input {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px 10px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-size: 18px;
+      border-bottom: 1px solid black;
+      &:focus {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid black;
+        outline: none;
+      }
+    }
+    .hide {
+      margin-top: 10px;
+      color: rgb(102, 102, 102);
+    }
+    .btn-login {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #18458b;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .list-link {
+      flex-direction: column;
+      display: flex;
+    }
+    .dont {
+      margin-top: 10px;
+    }
+  }
+}
