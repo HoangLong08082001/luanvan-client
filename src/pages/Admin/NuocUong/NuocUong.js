@@ -112,7 +112,6 @@ export default function NuocUong() {
                   <img className={cx("img")} src={item.hinh_anh} alt="" />
                 </td>
                 <td className={cx("action")}>
-                  <FontAwesomeIcon icon={faPen} className={cx("edit")} />
                   <FontAwesomeIcon
                     icon={faLock}
                     className={cx("lock")}

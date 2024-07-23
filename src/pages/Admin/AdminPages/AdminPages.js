@@ -54,9 +54,8 @@ export default function AdminPages() {
               <tr className={cx("tr-td")}>
                 <td>{index + 1}</td>
                 <td>{item.username_admin}</td>
-                <td>{item.trang_thai === 0 ? "Chưa hiển thị" : "Hiển thị"}</td>
+                <td>{item.trang_thai === 0 ? "Khoá" : "Hoạt động"}</td>
                 <td className={cx("action")}>
-                  <FontAwesomeIcon icon={faPen} className={cx("edit")} />
                   <FontAwesomeIcon
                     icon={faLock}
                     className={cx("lock")}

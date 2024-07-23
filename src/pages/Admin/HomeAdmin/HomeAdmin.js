@@ -11,8 +11,14 @@ import {
   faMoneyCheckDollar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "../../../setup-axios/axios";
 const cx = classNames.bind(style);
 export default function HomeAdmin() {
+  const [totalRevenue, setTotalRevenue] = useState("");
+  const [totalCustomer, setTotalCustomer] = useState("");
+  const [totalBill, setTotalBill] = useState("");
+  const [listMonth, setListMonth] = useState([]);
+  const [listData, setListData] = useState([]);
   function formatCurrency(amount) {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
@@ -27,6 +33,31 @@ export default function HomeAdmin() {
     { id: 3, title: "Tháng này" },
     { id: 4, title: "Năm nay" },
   ];
+  const fetchTotal = () => {
+    axios.get("/dashboard/get-total").then((res) => {
+      if (res) {
+        setTotalRevenue(res.data.tong_doanh_thu[0].tong_doanh_thu);
+        setTotalCustomer(res.data.tong_khach_hang[0].tong_khach_hang);
+        setTotalBill(res.data.tong_don_hang[0].tong_don_hang);
+      }
+    });
+  };
+  const fetchDoughnutChart = () => {
+    axios.get("/dashboard/get-doughnut-chart").then((res) => {
+      if (res) {
+        let data = res.data;
+        const map1 = data.map((item) => item.thang.toString());
+        const map2 = data.map((item) => item.tong_don_gia);
+        setListMonth(map1);
+        setListData(map2);
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchTotal();
+    fetchDoughnutChart();
+  }, []);
   useEffect(() => {
     if (!window.localStorage.getItem("token")) {
       navigate("/admin");
@@ -34,14 +65,6 @@ export default function HomeAdmin() {
   }, [navigate]);
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("title")}>
-        <p>Thống kê theo mốc thời gian</p>
-        <select name="" id="" className={cx("select")}>
-          {times.map((item, index) => {
-            return <option value={item.id}>{item.title}</option>;
-          })}
-        </select>
-      </div>
       <div className={cx("statis")}>
         <div className={cx("left")}>
           <div className={cx("item")} style={{ backgroundColor: "red" }}>
@@ -52,7 +75,7 @@ export default function HomeAdmin() {
               </p>
             </div>
             <div className={cx("item-bottom")}>
-              <p className={cx("total")}>{formatCurrency(13000000)}</p>
+              <p className={cx("total")}>{formatCurrency(totalRevenue)}</p>
             </div>
           </div>
           <div className={cx("item")} style={{ backgroundColor: "green" }}>
@@ -63,7 +86,7 @@ export default function HomeAdmin() {
               </p>
             </div>
             <div className={cx("item-bottom")}>
-              <p className={cx("total")}>13000000</p>
+              <p className={cx("total")}>{totalCustomer}</p>
             </div>
           </div>
           <div className={cx("item")} style={{ backgroundColor: "#F7B701" }}>
@@ -74,7 +97,7 @@ export default function HomeAdmin() {
               </p>
             </div>
             <div className={cx("item-bottom")}>
-              <p className={cx("total")}>13000000</p>
+              <p className={cx("total")}>{totalBill}</p>
             </div>
           </div>
         </div>
@@ -84,15 +107,7 @@ export default function HomeAdmin() {
               className={cx("doughnut")}
               type="doughnut"
               data={{
-                labels: [
-                  "January",
-                  "February",
-                  "March",
-                  "April",
-                  "May",
-                  "June",
-                  "July",
-                ],
+                labels: listMonth,
                 datasets: [
                   {
                     backgroundColor: [
@@ -101,7 +116,7 @@ export default function HomeAdmin() {
                       "#00D8FF",
                       "#DD1B16",
                     ],
-                    data: [40, 20, 80, 10],
+                    data: listData,
                   },
                 ],
               }}
@@ -110,20 +125,12 @@ export default function HomeAdmin() {
               className={cx("line")}
               type="bar"
               data={{
-                labels: [
-                  "January",
-                  "February",
-                  "March",
-                  "April",
-                  "May",
-                  "June",
-                  "July",
-                ],
+                labels: listMonth,
                 datasets: [
                   {
-                    label: "GitHub Commits",
+                    label: "Tổng số đơn hàng theo từng tháng",
                     backgroundColor: "#f87979",
-                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+                    data: listData,
                   },
                 ],
               }}
@@ -147,12 +154,12 @@ export default function HomeAdmin() {
               }}
             />
           </div>
-          <div className={cx("bottom")}>
+          {/* <div className={cx("bottom")}>
             <table className={cx("table-statis")}>
               <tr>
-                <th>Tên khách hàng</th>
-                <th>Tiền hoá đơn</th>
-                <th>Ngày thanh toán</th>
+                <th>Tên sân</th>
+                <th>Địa chỉ</th>
+                <th>Số lần đặt</th>
               </tr>
               <tr>
                 <td>1</td>
@@ -190,7 +197,7 @@ export default function HomeAdmin() {
                 <td>3</td>
               </tr>
             </table>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

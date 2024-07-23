@@ -120,7 +120,16 @@ export default function Information() {
                       </td>
                       <td>{formatDateTimeVN(item.ngay_tao)}</td>
                       <td>
-                        <button className={cx("btn-detail")}>Chi tiết</button>
+                        <button
+                          onClick={() =>
+                            navigate(
+                              `/admin-chi-tiet-hoa-don/${item.ma_don_gia}`
+                            )
+                          }
+                          className={cx("btn-detail")}
+                        >
+                          Chi tiết
+                        </button>
                       </td>
                     </tr>
                   );

@@ -146,7 +146,15 @@ export default function DonGia() {
                     }
                     className={cx("edit")}
                   />
-                  <FontAwesomeIcon icon={faFilePdf} className={cx("edit")} />
+                  {item.trang_thai_thanh_toan === 1 && (
+                    <FontAwesomeIcon
+                      onClick={() =>
+                        navigate(`/admin-in-hoa-don/${item.ma_don_gia}`)
+                      }
+                      icon={faFilePdf}
+                      className={cx("edit")}
+                    />
+                  )}
                 </td>
               </tr>
             );

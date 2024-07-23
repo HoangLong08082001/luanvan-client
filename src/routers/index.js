@@ -4,6 +4,7 @@ import ChiNhanh from "../pages/Admin/ChiNhanh/ChiNhanh";
 import DoAn from "../pages/Admin/DoAn/DoAn";
 import ChiTietHoaDon from "../pages/Admin/DonGia/ChiTietHoaDon/ChiTietHoaDon";
 import DonGia from "../pages/Admin/DonGia/DonGia";
+import PdfDonGia from "../pages/Admin/DonGia/PdfDonGia/PdfDonGia";
 import DungCuTheThao from "../pages/Admin/DungCuTheThao/DungCuTheThao";
 import DungCuYTe from "../pages/Admin/DungCuYTe/DungCuYTe";
 import ForgotPassword from "../pages/Admin/ForgotPassword/ForgotPassword";
@@ -40,6 +41,7 @@ const AdminRouter = [
   { path: "/admin-quen-mat-khau", component: ForgotPassword },
   { path: "/admin-cap-mat-khau/:id", component: ReNewPassAdmin },
   { path: "/admin-chi-tiet-hoa-don/:id", component: ChiTietHoaDon },
+  { path: "/admin-in-hoa-don/:id", component: PdfDonGia },
   { path: "/admin-trang-chu", component: HomeAdmin },
   { path: "/admin-chi-nhanh", component: ChiNhanh },
   { path: "/admin-do-an", component: DoAn },

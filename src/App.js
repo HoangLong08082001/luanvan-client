@@ -11,7 +11,7 @@ function App() {
           {AdminRouter.map((route, index) => {
             let Layout = AdminLayout;
             let Page = route.component;
-            if (index > 3) {
+            if (index > 4) {
               return (
                 <Route
                   path={route.path}
