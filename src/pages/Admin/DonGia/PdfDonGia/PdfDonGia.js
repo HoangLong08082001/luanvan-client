@@ -9,6 +9,14 @@ export default function PdfDonGia() {
   const targetRef = useRef();
   function formatVietnamDate(date) {
     date = new Date();
+    const day = ("0" + (date.getDate() + 1)).slice(-2); // Thêm số 0 vào phía trước nếu cần
+    const month = ("0" + (date.getMonth() + 1)).slice(-2); // Tháng bắt đầu từ 0, nên cần cộng thêm 1
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
+  function formatVietnamDateToday(date) {
+    date = new Date();
     const day = ("0" + date.getDate()).slice(-2); // Thêm số 0 vào phía trước nếu cần
     const month = ("0" + (date.getMonth() + 1)).slice(-2); // Tháng bắt đầu từ 0, nên cần cộng thêm 1
     const year = date.getFullYear();
@@ -76,7 +84,9 @@ export default function PdfDonGia() {
           </div>
           <div className={cx("right")}>
             <p className={cx("title")}>HOÁ ĐƠN DỊCH VỤ</p>
-            {date && <p className={cx("date")}>{formatVietnamDate(date)}</p>}
+            {date && (
+              <p className={cx("date")}>{formatVietnamDateToday(date)}</p>
+            )}
           </div>
         </div>
         <div className={cx("info-customer")}>

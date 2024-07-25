@@ -51,6 +51,11 @@ export default function Success() {
         .then((res) => {
           if (res) {
             navigate("/");
+            localStorage.removeItem("email");
+            localStorage.removeItem("token");
+            localStorage.removeItem("id");
+            localStorage.removeItem("tam_tinh");
+            window.location.reload();
           }
         });
     } catch (error) {

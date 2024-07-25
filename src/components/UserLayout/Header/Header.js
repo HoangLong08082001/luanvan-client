@@ -24,6 +24,9 @@ export default function Header() {
   console.log(id);
   const handleLogout = () => {
     localStorage.removeItem("email");
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("tam_tinh");
     window.location.reload();
   };
   const fetchCategory = async () => {
