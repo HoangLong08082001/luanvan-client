@@ -10,32 +10,54 @@ export default function LoginUser() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [hide, setHide] = useState(false);
+
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(username.toLowerCase());
+  }
+
+  function validate() {
+    if (username === "" || password === "") {
+      alert("Không được để trống");
+      return false;
+    } else if (!validateEmail(username)) {
+      alert("Email sai định dạng");
+      return false;
+    } else if (validateEmail(username) && username !== "" && password !== "") {
+      return true;
+    }
+  }
+
   const handleLogin = async () => {
-    try {
-      await axios
-        .post("/khach-hang/login", {
-          username: username,
-          password: password,
-        })
-        .then((res) => {
-          if (res) {
-            alert("Login successfully");
-            setUsername("");
-            setPassword("");
-            console.log(res.data.data + " " + res.data.access_token);
-            console.log(res.data.data);
-            localStorage.setItem("id", res.data.data.ma_khach_hang);
-            localStorage.setItem("email", res.data.data.email);
-            localStorage.setItem("tam_tinh", res.data.data.ma_tam_tinh);
-            window.location.reload();
-          }
-        });
-    } catch (error) {
-      if (error.response.status >= 500) {
-        alert("Error system");
-      } else {
-        alert(error.response.data.message);
+    if (validate() === true) {
+      try {
+        await axios
+          .post("/khach-hang/login", {
+            username: username,
+            password: password,
+          })
+          .then((res) => {
+            if (res) {
+              alert("Login successfully");
+              setUsername("");
+              setPassword("");
+              console.log(res.data.data + " " + res.data.access_token);
+              console.log(res.data.data);
+              localStorage.setItem("id", res.data.data.ma_khach_hang);
+              localStorage.setItem("email", res.data.data.email);
+              localStorage.setItem("tam_tinh", res.data.data.ma_tam_tinh);
+              window.location.reload();
+            }
+          });
+      } catch (error) {
+        if (error.response.status >= 500) {
+          alert("Error system");
+        } else {
+          alert(error.response.data.message);
+        }
       }
+    } else {
+      alert("Đăng nhập thất bại");
     }
   };
   return (

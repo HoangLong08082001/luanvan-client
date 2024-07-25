@@ -22,9 +22,13 @@ export default function RegisterUser() {
     }
     return true;
   };
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email.toLowerCase());
+  }
   const handleSignUp = () => {
     let check = validatePassword();
-    if (check === true) {
+    if (check === true && validateEmail(email) && soDienThoai !== "") {
       axios
         .post("/khach-hang/register", {
           ten_nguoi_dung: name,
@@ -38,6 +42,8 @@ export default function RegisterUser() {
             navigate("/dang-nhap");
           }
         });
+    } else {
+      alert("Đăng ký thất bại");
     }
   };
   return (

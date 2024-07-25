@@ -28,7 +28,6 @@ export default function Details() {
   const [currentDate, setCurrentDate] = useState("");
   const [idSan, setIdSan] = useState("");
   const location = useLocation();
-  const [today, setToday] = useState(getTodayDate());
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
   const [phone, setPhone] = useState("");
@@ -43,6 +42,7 @@ export default function Details() {
   const [object, setObject] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [matchedSlots, setMatchedSlots] = useState([]);
+  const [today, setToday] = useState(getTodayDate());
 
   const getLocation = () => {
     setIdSan(location.state.ma_san);
@@ -230,7 +230,7 @@ export default function Details() {
           {/* <p>{formatDate(currentDate)}</p> */}
           <input
             type="date"
-            value={currentDate}
+            value={ currentDate}
             onChange={(e) => handleOnchange(e)}
             min={getTodayDate(new Date())}
             className={cx("date")}
