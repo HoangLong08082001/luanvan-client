@@ -14,6 +14,14 @@ import ConfirmDonGia from "./ConfirmDonGia/ConfirmDonGia";
 import ModalDonGia from "./ModalDonGia/ModalDonGia";
 const cx = classNames.bind(style);
 export default function DonGia() {
+  function formatVietnamDateToday(date) {
+    date = new Date();
+    const day = ("0" + date.getDate()).slice(-2); // Thêm số 0 vào phía trước nếu cần
+    const month = ("0" + (date.getMonth() + 1)).slice(-2); // Tháng bắt đầu từ 0, nên cần cộng thêm 1
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
   const [listHoaDon, setListHoaDon] = useState([]);
   const [modal, setModal] = useState(false);
   const [modalCheck, setModalCheck] = useState(false);
@@ -125,7 +133,7 @@ export default function DonGia() {
                     ? "Đã thanh toán 50%"
                     : "Đã thanh toán"}
                 </td>
-                <td>{getTodayDate(item.ngay_tao)}</td>
+                <td>{formatVietnamDateToday(item.ngay_tao)}</td>
                 <td className={cx("action")}>
                   {item.trang_thai_thanh_toan === 0 ? (
                     <FontAwesomeIcon

@@ -55,6 +55,7 @@ export default function Success() {
             localStorage.removeItem("token");
             localStorage.removeItem("id");
             localStorage.removeItem("tam_tinh");
+            alert("Vui lòng đăng nhập tài khoản lại");
             window.location.reload();
           }
         });
