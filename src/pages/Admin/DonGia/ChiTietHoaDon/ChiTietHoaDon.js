@@ -50,7 +50,7 @@ export default function ChiTietHoaDon() {
           setListSan(res.data.san);
           setListTheThao(res.data.dung_cu_the_thao);
           setListYTe(res.data.dung_cu_y_te);
-
+          console.log(res.data.san);
         }
       });
     } catch (error) {}
@@ -92,7 +92,7 @@ export default function ChiTietHoaDon() {
         {listSan &&
           listSan.map((item, index) => {
             return (
-              <div className={cx("list")}>
+              <div className={cx("list")} key={index}>
                 <p className={cx("name-yard")}>Tên sân: {item.ten_san}</p>
                 <p className={cx("date-yard")}>
                   Thời gian đặt: {formatVietnamDate(item.thoi_gian)},

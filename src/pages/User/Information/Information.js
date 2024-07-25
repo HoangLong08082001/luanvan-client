@@ -40,17 +40,15 @@ export default function Information() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-  const fetchHoaDon = async () => {
+  const fetchHoaDon = () => {
     try {
-      await axios
+      axios
         .get(
-          `${
-            axios.defaults.baseURL
-          }/hoa-don/get-hoa-don-by-ma-khach-hang/${localStorage.getItem("id")}`
+          `/hoa-don/get-hoa-don-by-ma-khach-hang/${localStorage.getItem("id")}`
         )
         .then((res) => {
           if (res) {
-            setList(res.data.don_gia);
+            setList(res.data);
           }
         });
     } catch (error) {}
@@ -109,7 +107,7 @@ export default function Information() {
                 </tr>
                 {list.map((item, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td>{formatCurrency(item.tong_tien)}</td>
                       <td>{formatCurrency(item.tien_da_thanh_toan)}</td>
                       <td>{item.phuong_thuc}</td>

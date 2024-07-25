@@ -46,7 +46,7 @@ export default function HomeAdmin() {
     axios.get("/dashboard/get-doughnut-chart").then((res) => {
       if (res) {
         let data = res.data;
-        const map1 = data.map((item) => item.thang.toString());
+        const map1 = data.map((item) => "Tháng " + item.thang.toString());
         const map2 = data.map((item) => item.tong_don_gia);
         setListMonth(map1);
         setListData(map2);
@@ -121,6 +121,8 @@ export default function HomeAdmin() {
                 ],
               }}
             />
+          </div>
+          <div className={cx("bottom")}>
             <CChart
               className={cx("line")}
               type="bar"
@@ -154,50 +156,6 @@ export default function HomeAdmin() {
               }}
             />
           </div>
-          {/* <div className={cx("bottom")}>
-            <table className={cx("table-statis")}>
-              <tr>
-                <th>Tên sân</th>
-                <th>Địa chỉ</th>
-                <th>Số lần đặt</th>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-            </table>
-          </div> */}
         </div>
       </div>
     </div>
