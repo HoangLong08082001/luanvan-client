@@ -47,6 +47,8 @@ export default function Header() {
     } catch (error) {
       if (error.response.status >= 500) {
         alert(error.response.data.message);
+      } else {
+        alert("loading....");
       }
     }
   };

@@ -7,12 +7,13 @@ const cx = classNames.bind(style);
 export default function ChiTietHoaDon() {
   function formatVietnamDate(date) {
     date = new Date();
-    const day = ("0" + (date.getDate()+1)).slice(-2); // Thêm số 0 vào phía trước nếu cần
+    const day = ("0" + (date.getDate() + 1)).slice(-2); // Thêm số 0 vào phía trước nếu cần
     const month = ("0" + (date.getMonth() + 1)).slice(-2); // Tháng bắt đầu từ 0, nên cần cộng thêm 1
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;
-  }function formatVietnamDateToday(date) {
+  }
+  function formatVietnamDateToday(date) {
     date = new Date();
     const day = ("0" + date.getDate()).slice(-2); // Thêm số 0 vào phía trước nếu cần
     const month = ("0" + (date.getMonth() + 1)).slice(-2); // Tháng bắt đầu từ 0, nên cần cộng thêm 1
@@ -20,6 +21,21 @@ export default function ChiTietHoaDon() {
 
     return `${day}/${month}/${year}`;
   }
+  const formartIncreaseDate = (ISOdate) => {
+    const date = new Date(ISOdate);
+
+    // Cộng thêm 1 ngày
+    date.setDate(date.getDate());
+
+    // Lấy từng phần của ngày tháng năm
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Tháng bắt đầu từ 0
+    const year = date.getFullYear();
+
+    // Định dạng theo dd/mm/yyyy
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
+  };
   const navigate = useNavigate();
   const { id } = useParams();
   const [load, setLoad] = useState(true);
@@ -34,7 +50,7 @@ export default function ChiTietHoaDon() {
   const [listNuoc, setListNuoc] = useState([]);
   const [listTheThao, setListTheThao] = useState([]);
   const [listYTe, setListYTe] = useState([]);
-  const [thanhToan, setThanhToan]=useState('');
+  const [thanhToan, setThanhToan] = useState("");
   function formatCurrency(amount) {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
@@ -102,7 +118,7 @@ export default function ChiTietHoaDon() {
               <div className={cx("list")} key={index}>
                 <p className={cx("name-yard")}>Tên sân: {item.ten_san}</p>
                 <p className={cx("date-yard")}>
-                  Thời gian đặt: {formatVietnamDate(item.thoi_gian)},
+                  Thời gian đặt: {formartIncreaseDate(item.thoi_gian)},
                   {item.gio_bat_dau}-{item.gio_ket_thuc}
                 </p>
                 <p className={cx("address-yard")}>
