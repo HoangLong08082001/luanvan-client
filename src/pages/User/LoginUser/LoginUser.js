@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import style from "./LoginUser.module.scss";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
 import axios from "../../../setup-axios/axios";
 const cx = classNames.bind(style);
 export default function LoginUser() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [hide, setHide] = useState(false);
@@ -46,6 +47,8 @@ export default function LoginUser() {
               localStorage.setItem("id", res.data.data.ma_khach_hang);
               localStorage.setItem("email", res.data.data.email);
               localStorage.setItem("tam_tinh", res.data.data.ma_tam_tinh);
+
+              navigate("/");
               window.location.reload();
             }
           });
@@ -60,48 +63,52 @@ export default function LoginUser() {
       alert("Đăng nhập thất bại");
     }
   };
-  return (
-    <div className={cx("wrapper")}>
-      <div className={cx("form")}>
-        <p className={cx("title-login")}>TRANG ĐĂNG NHẬP</p>
-        <div className={cx("form-login")}>
-          <div className={cx("form-input")}>
-            <input
-              type="text"
-              name=""
-              id=""
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Nhập email"
-            />
-          </div>
-          <div className={cx("form-input")}>
-            <input
-              type={hide === false ? "password" : "text"}
-              name=""
-              id=""
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Nhập mật khẩu"
-            />
-            <p className={cx("hide")} onClick={() => setHide(!hide)}>
-              Hiện mật khẩu{" "}
-              <FontAwesomeIcon icon={hide === false ? faLock : faUnlock} />
-            </p>
-          </div>
-          <button className={cx("btn-login")} onClick={handleLogin}>
-            ĐĂNG NHẬP
-          </button>
-          <div className={cx("list-link")}>
-            <Link className={cx("dont")} to="/dang-ky">
-              Đăng ký nếu chưa có tài khoản
-            </Link>
-            <Link className={cx("dont")} to="/quen-mat-khau">
-              Quên mật khẩu
-            </Link>
+  if (!localStorage.getItem("email")) {
+    return (
+      <div className={cx("wrapper")}>
+        <div className={cx("form")}>
+          <p className={cx("title-login")}>TRANG ĐĂNG NHẬP</p>
+          <div className={cx("form-login")}>
+            <div className={cx("form-input")}>
+              <input
+                type="text"
+                name=""
+                id=""
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Nhập email"
+              />
+            </div>
+            <div className={cx("form-input")}>
+              <input
+                type={hide === false ? "password" : "text"}
+                name=""
+                id=""
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Nhập mật khẩu"
+              />
+              <p className={cx("hide")} onClick={() => setHide(!hide)}>
+                Hiện mật khẩu{" "}
+                <FontAwesomeIcon icon={hide === false ? faLock : faUnlock} />
+              </p>
+            </div>
+            <button className={cx("btn-login")} onClick={handleLogin}>
+              ĐĂNG NHẬP
+            </button>
+            <div className={cx("list-link")}>
+              <Link className={cx("dont")} to="/dang-ky">
+                Đăng ký nếu chưa có tài khoản
+              </Link>
+              <Link className={cx("dont")} to="/quen-mat-khau">
+                Quên mật khẩu
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    navigate("/");
+  }
 }
