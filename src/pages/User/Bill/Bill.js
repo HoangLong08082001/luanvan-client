@@ -141,8 +141,8 @@ export default function Bill() {
           orderInfo: "Thanh toán qua MoMo",
           amount:
             (totalDoAn + totalNuoc + totalSan + totalTheThao + totalYTe) / 2,
-          ipnUrl: `https://4652-116-110-41-77.ngrok-free.app/payment/callback`,
-          redirectUrl: `http://localhost:3000/success/${localStorage.getItem(
+          ipnUrl: `https://luanvan-server.vercel.app/payment/callback`,
+          redirectUrl: `https://luanvan-client.vercel.app/success/${localStorage.getItem(
             "tam_tinh"
           )}?${totalDoAn + totalNuoc + totalSan + totalTheThao + totalYTe}`,
           extraData: "",
