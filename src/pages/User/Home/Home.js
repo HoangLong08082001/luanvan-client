@@ -52,6 +52,7 @@ export default function Home() {
       <p className={cx("name")}>DỊCH VỤ ĐẶT SÂN THỂ THAO-TPHCM</p>
       <div className={cx("search-form")}>
         <input
+          onclick="ga('send', 'event', 'Menu', 'click', 'Login');"
           className={cx("search-input")}
           placeholder="Nhập tên sân hoặc tên quận"
           type="text"
