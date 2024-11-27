@@ -13,15 +13,16 @@ import {
 import axios from "../../../setup-axios/axios";
 import AddSan from "./AddSan/AddSan";
 import { useNavigate } from "react-router-dom";
+import AddSlot from "./AddSlot/AddSlot";
 const cx = classNames.bind(style);
 
 export default function San() {
   const [modal, setModal] = useState(false);
+  const [modal1, setModal1] = useState(false);
   const [listSan, setListSan] = useState([]);
   const navigate = useNavigate();
-  const [load,setLoad] = useState(true);
+  const [load, setLoad] = useState(true);
   const [id, setId] = useState(null);
-
 
   useEffect(() => {
     if (!window.localStorage.getItem("token")) {
@@ -47,16 +48,19 @@ export default function San() {
           fetchListSan();
         }
       });
-      setLoad(false);
+    setLoad(false);
   };
 
-  const closeModel = ()=>{
+  const closeModel = () => {
     setLoad(true);
     setModal(false);
     setId(null);
-  }
+  };
+  const closeModel1 = () => {
+    setModal1(false);
+  };
 
-   async function editModel(itemId){
+  async function editModel(itemId) {
     await setModal(true);
     await setId(itemId);
   }
@@ -71,6 +75,9 @@ export default function San() {
       <div className={cx("list-btn")}>
         <button className={cx("add")} onClick={() => setModal(true)}>
           THÊM MỚI
+        </button>
+        <button className={cx("addSlot")} onClick={() => setModal1(true)}>
+          KHUNG GIỜ
         </button>
         <button className={cx("excel")}>XUẤT EXCEL</button>
       </div>
@@ -96,11 +103,11 @@ export default function San() {
                   <img className={cx("img")} src={item.hinh_anh} alt="" />
                 </td>
                 <td className={cx("action")}>
-                  <FontAwesomeIcon 
-                    icon={faPen} 
+                  <FontAwesomeIcon
+                    icon={faPen}
                     className={cx("edit")}
                     onClick={() => editModel(item.ma_san)}
-                    />
+                  />
                   <FontAwesomeIcon
                     icon={item.trang_thai === 1 ? faLock : faUnlock}
                     className={cx(
@@ -116,6 +123,7 @@ export default function San() {
         </table>
       </div>
       {modal === true ? <AddSan setModalFalse={closeModel} id={id} /> : ""}
+      {modal1 === true ? <AddSlot setModalFalse1={closeModel1} /> : ""}
     </div>
   );
 }
